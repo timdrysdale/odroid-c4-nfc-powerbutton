@@ -1,0 +1,11 @@
+[Unit]
+Description= halt when button pressed
+Requires=local-fs.target
+
+[Service]
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/local/bin/powerbutton
+
+[Install]
+WantedBy=multi-user.target

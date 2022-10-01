@@ -1,0 +1,34 @@
+---
+  - name: Copy powerbutton script 
+    copy:
+      src: ../files/powerbutton
+      dest: /usr/local/bin/powerbutton
+      mode: a+x
+
+  - name: Copy powerbutton service file 
+    copy:
+      src: ../services/powerbutton.service
+      dest: /etc/systemd/system/powerbutton.service
+      owner: root
+      group: root
+      
+  - name: Force systemd to reread configs (2.4 and above)
+    ansible.builtin.systemd:
+      daemon_reload: yes
+ 
+  - name: Enable and start powerbutton service
+    service:
+      name: powerbutton
+      state: started
+      enabled: true
+ 
+    
+  - name: get service facts
+    service_facts:
+       
+  - name: check powerbutton service installed
+    fail:
+      msg: "powerbutton service is not installed"
+    when: ansible_facts.services["powerbutton.service"] is not defined
+ 
+  
