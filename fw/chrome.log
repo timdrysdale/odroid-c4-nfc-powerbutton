@@ -1,0 +1,2 @@
+[3276180:3276180:1001/143531.720334:ERROR:gpu_memory_buffer_support_x11.cc(44)] dri3 extension not supported.
+[3276112:3276199:1001/143531.802008:ERROR:nss_util.cc(349)] After loading Root Certs, loaded==false: NSS error code: -8018
